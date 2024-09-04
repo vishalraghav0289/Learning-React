@@ -5,13 +5,12 @@ import { Button, Input , Logo } from './Index'
 import {useDispacth} from "react-redux"
 import authService from '../appWrite/auth'
 import { useForm } from 'react-hook-form'
-import { useState } from 'react'
 
 function Login() {
+    const [error, setError]=useState("")
     const navigate = useNavigate()
     const dispatch =useDispacth()
     const [register, handleSubmit]=useForm()
-    const [error, setError]=useState("")
 
     const login = async(data)=>{
         setError("")

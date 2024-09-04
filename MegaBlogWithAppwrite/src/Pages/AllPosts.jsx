@@ -1,5 +1,5 @@
 import React, {useState , useEffect} from 'react'
-import { Contaner , PostCard} from "../Components"
+import { Contaner , PostCard} from "../Components/Index"
 import appwriteservice from '../appWrite/config'
 
 const [posts , setPosts] = useState([]);
