@@ -7,6 +7,7 @@ import { Client,Account,ID } from "appwrite";
 export class AuthService{
     client= new Client();
     account;
+   
 
     constructor() {
         this.client
@@ -50,13 +51,13 @@ export class AuthService{
 
     async getCurrentUser() {
         try {
-            return await this.account.get();
+          return await this.account.get();
         } catch (error) {
-            console.log("Appwrite serive :: getCurrentUser :: error", error);
+          console.log("Appwrite service :: getCurrentUser :: error");
         }
-
+      
         return null;
-    }
+      }
 
     async logOut(){
         try {
