@@ -1,5 +1,5 @@
 import React, {useState , useEffect} from 'react'
-import { Contaner , PostCard} from "../Components/Index"
+import { Container , PostCard} from "../Components/Index"
 import appwriteservice from '../appWrite/config'
 
 const [posts , setPosts] = useState([]);
@@ -13,7 +13,7 @@ appwriteservice.getPosts([]).then((posts)=>{
 function AllPosts() {
   return (
     <div w-full>
-        <Contaner>
+        <Container>
             <div className='flex flex-wrap'>
             {
                 posts.map((post)=>(
@@ -25,7 +25,7 @@ function AllPosts() {
 
             </div>
             
-        </Contaner>
+        </Container>
         </div>
   )
 }

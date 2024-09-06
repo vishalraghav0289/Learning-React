@@ -1,5 +1,5 @@
 import React from 'react'
-import {Logo,Logout, Contaner} from "../Index"
+import {Logo,Logout, Container} from "../Index"
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -38,7 +38,7 @@ function Header() {
   ]
   return (
     <Header className="py-3 shadow bg-gray-500 ">
-      <Contaner>
+      <Container>
         <nav className='flex'>
           <div className='mr-4'>
             <Link to='/'>
@@ -64,7 +64,7 @@ function Header() {
             </ul>
         </nav>
 
-      </Contaner>
+      </Container>
     </Header>
   )
 }

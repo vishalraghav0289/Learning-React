@@ -149,7 +149,7 @@ export class Service{
 
     }
      getFilePreview(fileID){
-         return this.bucket.deleteFile(
+         return this.bucket.getFilePreview(
                 Configue.appWriteBucketId,
                 fileID,
             )
@@ -160,4 +160,4 @@ export class Service{
 }
 
 const service= new Service();
-export default service;
+export default {service};

@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import authService from"./appWrite/auth.js"
 import { useDispatch } from 'react-redux'
-import { logIn, logOut } from '../Store/authSlice.js'
+import { login, logOut } from '../Store/authSlice.js'
 import { Outlet } from 'react-router-dom'
 import { Header,Footer } from './Components/Index.js'
 
@@ -18,7 +18,7 @@ function App() {
     authService.getCurrentUser()
     .then((userData)=>{
         if(userData){
-          dispacth(logIn({userData}));
+          dispacth(login({userData}));
           
         }
         else{
