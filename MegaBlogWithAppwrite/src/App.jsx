@@ -1,44 +1,41 @@
-import { useState , useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import authService from"./appWrite/auth.js"
-import { useDispatch } from 'react-redux'
-import { login, logOut } from '../Store/authSlice.js'
-import { Outlet } from 'react-router-dom'
-import { Header,Footer } from './Components/Index.js'
-
+import { useState, useEffect } from 'react';
+import './App.css';
+import authService from "./appWrite/auth.js";
+import { useDispatch } from 'react-redux';
+import { login, logOut } from '../Store/authSlice.js';
+import { Outlet } from 'react-router-dom';
+import { Header, Footer } from './Components/Index.js';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
-  const[loading, setloading]= useState(true);
-  const dispacth = useDispatch();
-
-    useEffect(() => {
+  useEffect(() => {
     authService.getCurrentUser()
-    .then((userData)=>{
-        if(userData){
-          dispacth(login({userData}));
-          
+      .then((userData) => {
+        if (userData) {
+          dispatch(login({ userData }));
+        } else {
+          dispatch(logOut());
         }
-        else{
-          dispacth(logOut());
-        }
-    })
-    .finally(()=>setloading(false));
-    }, [])
+      })
+      .catch((error) => {
+        console.error('Error getting current user:', error);
+      })
+      .finally(() => setLoading(false));
+  }, [authService, dispatch]);
 
-
-
-  return !loading ? (<div className='min-h-screen   flex flex-wrap  content-between bg-gray-400'>
-    <div className='w-full block'>
-      <Header/>
-      <main>
-        {/*<Outlet/>    to do*/}
-      </main>
-      <Footer/>
+  return !loading ? (
+    <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
+      <div className='w-full block'>
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
       </div>
-  </div>) : null;
+    </div>
+  ) : null;
 }
 
-export default App
+export default App;
